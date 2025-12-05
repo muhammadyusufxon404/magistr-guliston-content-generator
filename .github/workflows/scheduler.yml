@@ -6,11 +6,21 @@ on:
     - cron: '0 2 * * *'   # 07:00 Toshkent = morning
     - cron: '0 5 * * *'   # 10:00 Toshkent = motivation  
     - cron: '0 9 * * *'   # 14:00 Toshkent = education
-  workflow_dispatch:  # Qo'lda ishga tushirish
+  workflow_dispatch:
+    inputs:
+      job_type:
+        description: 'Qaysi postni yuborish'
+        required: true
+        default: 'morning'
+        type: choice
+        options:
+          - morning
+          - motivation
+          - education
 
 jobs:
   morning:
-    if: github.event.schedule == '0 2 * * *' || github.event_name == 'workflow_dispatch'
+    if: github.event.schedule == '0 2 * * *' || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +35,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
   motivation:
-    if: github.event.schedule == '0 5 * * *'
+    if: github.event.schedule == '0 5 * * *' || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'motivation')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,7 +50,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
   education:
-    if: github.event.schedule == '0 9 * * *'
+    if: github.event.schedule == '0 9 * * *' || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'education')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
