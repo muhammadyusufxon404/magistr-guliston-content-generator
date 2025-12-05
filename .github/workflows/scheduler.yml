@@ -1,0 +1,55 @@
+name: Telegram Post Scheduler
+
+on:
+  schedule:
+    # UTC vaqtida (O'zbekiston = UTC+5)
+    - cron: '0 2 * * *'   # 07:00 Toshkent = morning
+    - cron: '0 5 * * *'   # 10:00 Toshkent = motivation  
+    - cron: '0 9 * * *'   # 14:00 Toshkent = education
+  workflow_dispatch:  # Qo'lda ishga tushirish
+
+jobs:
+  morning:
+    if: github.event.schedule == '0 2 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install @google/generative-ai
+      - run: node scheduler.js morning
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+  motivation:
+    if: github.event.schedule == '0 5 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install @google/generative-ai
+      - run: node scheduler.js motivation
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+  education:
+    if: github.event.schedule == '0 9 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install @google/generative-ai
+      - run: node scheduler.js education
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

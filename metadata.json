@@ -1,0 +1,5 @@
+{
+  "name": "Magistr Guliston Content Generator",
+  "description": "Telegram kanali uchun avtomatik kunlik xabarlar (Ob-havo, Faktlar, Motivatsiya, Tarix) generatori.",
+  "requestFramePermissions": []
+}
