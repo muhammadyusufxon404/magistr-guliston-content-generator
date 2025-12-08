@@ -3,7 +3,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 // ===== SOZLAMALAR =====
 const TELEGRAM_BOT_TOKEN = "8449533545:AAGz4p6j3ghmWPj07Us1bLB2AsVOxW7YoR0";
 const TELEGRAM_CHAT_ID = "-1001321711298";
-const GEMINI_API_KEY = "AIzaSyDN5XcZaj6LOlXB8oBQ3m6x-TsZLoaAWls";
+const GEMINI_API_KEY = "AIzaSyDjuWsE6GI55EEPynj11Vn6b8p_NCcYpYY";
 
 const FOOTER_TEXT = "\n\n📣 @magistr_guliston sahifasini kuzatishda davom eting!";
 
