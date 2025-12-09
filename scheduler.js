@@ -43,7 +43,7 @@ async function fetchWeather() {
 // ===== GEMINI AI =====
 async function generateContent(dateStr, type) {
   const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   const prompts = {
     birthdays: `Bugun ${dateStr}. Bugun tug'ilgan mashhur shaxslarni (olimlar, yozuvchilar, san'atkorlar) O'zbek tilida yozing. Emojilar bilan. Faqat matnni qaytaring.`,

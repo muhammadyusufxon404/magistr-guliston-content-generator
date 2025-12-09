@@ -24,7 +24,7 @@ const responseSchema: Schema = {
 };
 
 export const generateDailyContent = async (dateStr: string): Promise<GeneratedContent> => {
-  const modelId = "gemini-2.5-flash"; // Optimized for speed/cost for text tasks
+  const modelId = "gemini-2.0-flash";
   
   const prompt = `
     Siz Telegram kanali (@magistr_guliston) uchun kontent yaratuvchi yordamchisiz.
