@@ -1,11 +1,11 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // ===== SOZLAMALAR =====
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const TELEGRAM_BOT_TOKEN = '8449533545:AAGz4p6j3ghmWPj07Us1bLB2AsVOxW7YoR0';
+const TELEGRAM_CHAT_ID = '@magistr_guliston';
+const GEMINI_API_KEY = 'AIzaSyCTqNrSGYyXTaL9lSZrSJI5cMdErmei_nA';
 
-const FOOTER_TEXT = "\n\n📣 @magistr_guliston sahifasini kuzatishda davom eting!";
+const FOOTER_TEXT = "\n\n @magistr_guliston sahifasini kuzatishda davom eting!";
 
 // ===== OB-HAVO =====
 async function fetchWeather() {
